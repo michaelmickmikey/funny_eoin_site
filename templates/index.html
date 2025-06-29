@@ -9,11 +9,12 @@
             padding-top: 50px;
         }
         img {
-            height: 650px;
+            height: 550px;
             width: auto;
             border: 2px solid #444;
             border-radius: 8px;
             transition: transform 5s ease-in-out;
+            margin-bottom: 20px;
         }
         img:hover {
             transform: scale(1.2);
@@ -23,12 +24,33 @@
             margin-top: 20px;
             color: #555;
         }
+        button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            background: #ff4d00;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #ff7700;
+        }
     </style>
 </head>
 <body>
     <h1>owi glackin</h1>
     <p>NEW TOILET ROLL DAY</p>
-    <img src="{{ url_for('static', filename='eoin.jpg') }}" alt="Eoin in all his glory">
+
+    <img id="eoinPic" src="{{ url_for('static', filename='eoin1.jpg') }}"
+         alt="Eoin in all his glory" onclick="swapPic()">
+
+    <div>
+        <button onclick="swapPic()">CLICK THE IMAGE TO CHANGE OWI'S FACE 😂</button>
+    </div>
+
     <div id="quote"></div>
 
     <script>
@@ -37,10 +59,32 @@
             "Gone send me a fiver for monster sir",
             "aye.... it'll be a condom for you...",
             "bottle of prime filled with pish and questionable mattress stains",
-            "bent over the balcony getting railed by the postman"
+            "bent over the balcony getting railed by the postman",
+            "When God made Owi, he was just taking the absolute piss.",
+            "Stinks of saltwater, desperation, and Lynx Africa.",
+            "Like a half-cooked sausage roll left on a radiator."
         ];
         document.getElementById("quote").innerText =
             quotes[Math.floor(Math.random() * quotes.length)];
+
+        const pics = [
+            "eoin1.jpg","eoin2.jpg","eoin3.jpg","eoin4.jpg","eoin5.jpg",
+            "eoin6.jpg","eoin7.jpg","eoin8.jpg","eoin9.jpg","eoin10.jpg",
+            "eoin11.jpg","eoin12.jpg","eoin13.jpg","eoin14.jpg","eoin15.jpg",
+            "eoin16.jpg","eoin17.jpg","eoin18.jpg","eoin19.jpg","eoin20.jpg",
+            "eoin21.jpg","eoin22.jpg"
+        ];
+
+        function swapPic() {
+            const i = Math.floor(Math.random() * pics.length);
+            document.getElementById("eoinPic").src = "/static/" + pics[i];
+            if (navigator.vibrate) {
+                navigator.vibrate(200);
+            }
+            // also randomise quote to keep it chaotic
+            document.getElementById("quote").innerText =
+                quotes[Math.floor(Math.random() * quotes.length)];
+        }
     </script>
 </body>
 </html>
