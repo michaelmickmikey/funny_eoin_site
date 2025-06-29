@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My New Website</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding-top: 50px;
+        }
+        img {
+            height: 650px;
+            width: auto;
+            border: 2px solid #444;
+            border-radius: 8px;
+            transition: transform 5s ease-in-out;
+        }
+        img:hover {
+            transform: scale(1.2);
+        }
+        #quote {
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to my new website!</h1>
+    <p>Isn't this the best?</p>
+    <img src="{{ url_for('static', filename='eoin.jpg') }}" alt="Eoin in all his glory">
+    <div id="quote"></div>
+
+    <script>
+        const quotes = [
+            "Just Owi, commando in a pair of GAA shorts, and a dream.",
+            "Gone send me a fiver for monster sir",
+            "aye.... it'll be a condom for you...",
+            "bottle of prime filled with pish and questionable mattress stains",
+            "bent over the balcony getting railed by the postman"
+        ];
+        document.getElementById("quote").innerText =
+            quotes[Math.floor(Math.random() * quotes.length)];
+    </script>
+</body>
+</html>
